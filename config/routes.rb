@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
+  root 'breweries#index'
   resources :beers
   resources :breweries
+  resources :ratings, only: [:index, :new, :create, :destroy]
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

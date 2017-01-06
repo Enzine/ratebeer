@@ -14,6 +14,7 @@
 
   <tbody>
     <% @beers.each do |beer| %>
+      <% byebug if beer.brewery.nil? %>
       <tr>
         <td><%= link_to beer.name, beer %></td>
         <td><%= beer.style %></td>
@@ -27,5 +28,4 @@
 
 <br>
 
-<%= link_to 'New Beer', new_beer_path %><br>
-<%= link_to 'list of breweries', breweries_path %>
+<%= link_to 'New Beer', new_beer_path %>
