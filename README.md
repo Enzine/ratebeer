@@ -6,4 +6,4 @@ I add functionality to keep up with the course while it progresses.
 
 Weeks done 2/7!
 
-[Project in Heroku](http://enzineratebeer.herokuapp.com)
+<a href="http://enzineratebeer.herokuapp.com" target="_blank">Project in Heroku</a>
