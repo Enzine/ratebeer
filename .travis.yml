@@ -1,0 +1,16 @@
+language: ruby
+rvm:
+- 2.3.1
+script:
+- bundle exec rake db:migrate --trace
+- RAILS_ENV=test bundle exec rake db:migrate --trace
+- bundle exec rake db:test:prepare
+- bundle exec rspec -fd spec/
+
+deploy:
+  provider: heroku
+  api_key:
+    secure: zsjwbsxLELpQdheRFGIaeFE9XXx2THqNZruwHQaemULTR8l+ic+T1MTP/jwZFzrGjDqTBkw2uqRgMbkHSyYZXCGQlkAzSZt6PMHAIc5kXL4+j5lqvukQYt/5nbZKKVVu3pIKKHiffIGGsuTsaneuwzyFzO433rHKbrK69VPCsJcQ9o2iijgs+uP9Xt4oy5ggiqgz8Rayf4RpG2Xy4DNzrs+YK0tIhz5Yr0xd6i1Vy+AmlatNsmUcRMARfnjM3qfxRzHVcE2CnHwOnk/KHQm0oXlbjjwcVUufAvGgC0q22DJ6YChrserjnNBRNaP8dRKcomqBGQqMz8aNEpsr2qda6UvN6k1YxSwx4Olu9qZh5pfUmlbCGXQbekGGbwzLPkZeZ7zWIEhTUGKty6MowCtoikCs/MZagd5IhL1QoeOoB6svpCwH467vRXcj3hFk2sxNgvE38fLRZe03rnyOayw3QXh5cauJGvXZQkqS2HPQtzfI6fZ61/vr9bErT4dJomOGnrM5dlMkoh1jX5otGyxcNaAg4611GYExFm05grhpsy+HSR44xB1hpKC7pDbgmgLRyCkC5tUZXBWYbFnT19O/voZFcFHRU0UTp8gf7jeHUciCONCzUf05Ul85LouXiS3OvI/N+VW2EinTFIumdSOYbkwZAULY1E8DUJTw/iupnog=
+  app: enzineratebeer
+  on:
+    repo: Enzine/ratebeer

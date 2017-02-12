@@ -6,4 +6,6 @@ I add functionality to keep up with the course while it progresses.
 
 Weeks done 3/7!
 
-<a href="http://enzineratebeer.herokuapp.com" target="_blank">Project in Heroku</a>
+[Project in Heroku](http://enzineratebeer.herokuapp.com)
+[![Build Status](https://api.travis-ci.org/Enzine/ratebeer-public.png)](https://travis-ci.org/Enzine/ratebeer-public)
+[![Code Climate](https://codeclimate.com/github/Enzine/ratebeer-public.png)](https://codeclimate.com/github/Enzine/ratebeer-public)

@@ -6,11 +6,14 @@
 
 Number of beers: <%= @brewery.beers.count %><br><br>
 
-<% @brewery.beers.each do |beer| %>
-  <%= link_to beer.name, beer %> |
-<% end %><br><br>
-
-Has <%= pluralize(@brewery.ratings.count, 'rating') %><% unless @brewery.ratings.empty? %>, average <%= @brewery.average_rating %>
+<% if @brewery.beers.empty? %>
+  No beers added to this brewery.
+<% else %>
+  <% @brewery.beers.each do |beer| %>
+    <%= link_to beer.name, beer %> |
+  <% end %><br><br>
+  Has <%= pluralize(@brewery.ratings.count, 'rating') %><% unless @brewery.ratings.empty? %>, average <%= @brewery.average_rating %>
+  <% end %>
 <% end %><br><br>
 
 <%= link_to 'Edit', edit_brewery_path(@brewery) %> |
