@@ -7,5 +7,5 @@ I add functionality to keep up with the course while it progresses.
 Weeks done 3/7!
 
 [Project in Heroku](http://enzineratebeer.herokuapp.com)
-[![Build Status](https://api.travis-ci.org/Enzine/ratebeer-public.png)](https://travis-ci.org/Enzine/ratebeer-public)
+[![Build Status](https://travis-ci.org/Enzine/ratebeer.svg?branch=master)](https://travis-ci.org/Enzine/ratebeer)
 [![Code Climate](https://codeclimate.com/github/Enzine/ratebeer/badges/gpa.svg)](https://codeclimate.com/github/Enzine/ratebeer)
