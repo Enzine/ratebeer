@@ -5,7 +5,7 @@
 <p>Has made <%= pluralize(@user.ratings.count, 'rating') %> with a total average of <%= @user.average_rating %>.</p>
 
 <% unless @user.favorite_style.nil? %>
-  <%= @user.username %>'s favorite beer style is <%= @user.favorite_style %><br>
+  <%= @user.username %>'s favorite beer style is <%= @user.favorite_style.name %><br>
 <% end %>
 
 <% unless @user.favorite_brewery.nil? %>
