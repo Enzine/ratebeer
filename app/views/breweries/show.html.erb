@@ -16,5 +16,7 @@ Number of beers: <%= @brewery.beers.count %><br><br>
   <% end %>
 <% end %><br><br>
 
-<%= link_to 'Edit', edit_brewery_path(@brewery) %> |
+<% if current_user %>
+  <%= link_to 'Edit', edit_brewery_path(@brewery) %> |
+<% end %>
 <%= link_to 'Back', breweries_path %>

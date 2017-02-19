@@ -21,5 +21,6 @@
   <li> <%= link_to m.user.username, m.user %> </li>
   <% end %>
 </ul>
-
-<%= link_to 'Edit', edit_beer_club_path(@beer_club) %>
+<% if current_user %>
+  <%= link_to 'Edit', edit_beer_club_path(@beer_club) %>
+<% end %>

@@ -27,6 +27,7 @@ group :test do
   gem 'factory_girl_rails'
   gem 'capybara'
   gem 'launchy'
+  gem 'webmock'
 end
 
 # Use SCSS for stylesheets
@@ -40,6 +41,8 @@ gem 'coffee-rails', '~> 4.1.0'
 
 gem 'rspec-its'
 gem 'simplecov', require: false
+
+gem 'httparty'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
