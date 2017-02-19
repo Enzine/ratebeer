@@ -64,9 +64,10 @@ RSpec.describe User, type: :model do
     end
 
     it "is the one with highest rating if several rated" do
-      create_beer_with_rating(user, 10)
-      best = create_beer_with_rating(user, 25)
-      create_beer_with_rating(user, 7)
+      style = FactoryGirl.create(:style)
+      create_beer_with_rating(user, 10, style)
+      best = create_beer_with_rating(user, 25, style)
+      create_beer_with_rating(user, 7, style)
 
       expect(user.favorite_beer).to eq(best)
     end
@@ -90,11 +91,13 @@ RSpec.describe User, type: :model do
     end
 
     it "is the style with best average rating if several rated" do
-      create_beer_with_rating(user, 7, "Lager")
-      create_beer_with_rating(user, 5, "Lager")
-      create_beer_with_rating(user, 7, "IPA")
+      style = FactoryGirl.create(:style)
+      style2 = FactoryGirl.create(:style2)
+      create_beer_with_rating(user, 7, style)
+      create_beer_with_rating(user, 5, style)
+      create_beer_with_rating(user, 7, style2)
 
-      expect(user.favorite_style).to eq("IPA")
+      expect(user.favorite_style).to eq(style2)
     end
   end
 
@@ -118,15 +121,16 @@ RSpec.describe User, type: :model do
     it "is the brewery with best average rating if several rated" do
       p1 = FactoryGirl.create(:brewery, name:"Panimo1")
       p2 = FactoryGirl.create(:brewery, name:"Panimo2")
-      p1.beers << create_beer_with_rating(user, 7)
-      p1.beers << create_beer_with_rating(user, 5)
-      p2.beers << create_beer_with_rating(user, 7)
+      style = FactoryGirl.create(:style)
+      p1.beers << create_beer_with_rating(user, 7, style)
+      p1.beers << create_beer_with_rating(user, 5, style)
+      p2.beers << create_beer_with_rating(user, 7, style)
       expect(user.favorite_brewery.name).to eq("Panimo2")
     end
   end
 
-  def create_beer_with_rating(user, score, style="lol")
-    beer = FactoryGirl.create(:beer, style:style)
+  def create_beer_with_rating(user, score, style)
+    beer = FactoryGirl.create(:beer, style: style)
     FactoryGirl.create(:rating, score: score, beer: beer, user: user)
     beer
   end

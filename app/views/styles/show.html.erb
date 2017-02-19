@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @style.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @style.description %>
+</p>
+
+<strong>Known beers of this style:</strong><br>
+<% @beers.each do |beer| %>
+  <% if beer.style == @style %>
+    <%= link_to beer.name, beer %> by brewery: <%= link_to beer.brewery.name, beer.brewery %>
+  <% end %>
+<% end %>
+<br><br>
+<%= link_to 'Edit', edit_style_path(@style) %> |
+<%= link_to 'Back', styles_path %>
