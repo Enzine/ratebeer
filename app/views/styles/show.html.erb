@@ -13,7 +13,7 @@
 <strong>Known beers of this style:</strong><br>
 <% @beers.each do |beer| %>
   <% if beer.style == @style %>
-    <%= link_to beer.name, beer %> by brewery: <%= link_to beer.brewery.name, beer.brewery %>
+    <%= link_to beer.name, beer %> by brewery: <%= link_to beer.brewery.name, beer.brewery %><br>
   <% end %>
 <% end %>
 <br><br>
