@@ -29,6 +29,6 @@
 </ul>
 <% if @user == current_user %>
   Account options:<br>
-  <%= link_to 'Edit account', edit_user_path(@user) %><br>
-  <%= link_to 'Destroy account', @user, method: :delete, data: { confirm: 'You are destroying this account for good. Are you sure?' } %>
+  <%= link_to 'Edit account', edit_user_path(@user), class:'btn btn-default btn-xs' %><br>
+  <%= link_to 'Destroy account', @user, method: :delete, class:'btn btn-danger btn-xs', data: { confirm: 'You are about to destoy this account. Are you sure?' } %>
 <% end %>

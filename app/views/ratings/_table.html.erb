@@ -1,0 +1,16 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th></th>
+      <th>average</th>
+    </tr>
+  </thhead>
+  <tbody>
+    <% top.each do |model, average| %>
+      <tr>
+        <td><%= model.name %></td>
+        <td><%= average %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

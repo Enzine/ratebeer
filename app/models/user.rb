@@ -44,4 +44,12 @@ class User < ActiveRecord::Base
     end
     sum.max_by { |brewery, s| (s / count[brewery].to_f).round(2) }.first
   end
+
+  def self.top(n)
+    averages = {}
+    User.all.each do |user|
+      averages[user] = user.ratings
+    end
+    Hash[averages.sort_by{|k, v| v.count}.reverse].take n
+  end
 end

@@ -1,6 +1,10 @@
 <p id="notice"><%= notice %></p>
 
-<h2><%= @brewery.name %></h2>
+<h2><%= @brewery.name %>
+  <% if not @brewery.active  %>
+    <span class="label label-info">retired</span>
+  <% end %>
+</h2>
 
 <i> Established at <%= @brewery.year %></i><br><br>
 
@@ -17,6 +21,6 @@ Number of beers: <%= @brewery.beers.count %><br><br>
 <% end %><br><br>
 
 <% if current_user %>
-  <%= link_to 'Edit', edit_brewery_path(@brewery) %> |
+  <%= link_to 'Edit', edit_brewery_path(@brewery), class: 'btn btn-default btn-xs' %> |
 <% end %>
-<%= link_to 'Back', breweries_path %>
+<%= link_to 'Back', breweries_path, class: 'btn btn-default btn-xs' %>

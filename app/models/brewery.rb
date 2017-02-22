@@ -5,13 +5,17 @@ class Brewery < ActiveRecord::Base
   has_many :ratings, through: :beers
 
   validates :name, presence: true
-  validates :year, numericality: { greater_than_or_equal_to: 1042,
-                                   less_than_or_equal_to: proc { Time.current.year },
-                                   only_integer: true }
+  validates :year, numericality: { less_than_or_equal_to: ->(_) { Time.now.year} }
 
-  def restart
-    year = 2016
-    puts "changed year to #{year}"
+  scope :active, -> { where active:true }
+  scope :retired, -> { where active:[nil,false] }
+
+  def self.top(n)
+    averages = {}
+    Brewery.all.each do |brewery|
+      averages[brewery] = brewery.average_rating
+    end
+    Hash[averages.sort_by{|k, v| v}.reverse].take n
   end
 
 end

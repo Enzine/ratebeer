@@ -33,7 +33,7 @@
   <% else %>
     <%= form_for(@membership, method: "delete") do |f| %>
       <%= f.hidden_field :beer_club_id %>
-       <%= f.submit value: "End membership" %>
+       <%= f.submit class:'btn btn-warning', value: "End membership", data: {confirm: 'Are you sure?'} %>
     <% end %>
   <% end %>
 

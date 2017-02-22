@@ -12,4 +12,12 @@ class Beer < ActiveRecord::Base
   def to_s
     "#{name}, from #{brewery.name}"
   end
+
+  def self.top(n)
+    averages = {}
+    Beer.all.each do |beer|
+      averages[beer] = beer.average_rating
+    end
+    Hash[averages.sort_by{|k, v| v}.reverse].take n
+  end
 end
