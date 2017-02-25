@@ -3,10 +3,15 @@ Rails.application.routes.draw do
   root 'breweries#index'
   resources :memberships
   resources :beer_clubs
-  resources :users
   resources :beers
-  resources :breweries
+  resources :breweries do
+    post 'toggle_activity', on: :member
+  end
   resources :ratings, only: [:index, :new, :create, :destroy]
+  resources :users do
+    post 'toggle_lock', on: :member
+  end
+
 
   get 'signup', to: 'users#new'
   resource :session, only: [:new, :create, :destroy]

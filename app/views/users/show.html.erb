@@ -1,6 +1,14 @@
 <p id="notice"><%= notice %></p>
 
-<h2> <%= @user.username %></h2>
+<h2> <%= @user.username %>
+  <% if (current_user.admin) and (@user != current_user) %>
+    <% if @user.blocked %>
+      <%= link_to "Unlock", toggle_lock_user_path(@user.id), method: :post, class: "btn btn-warning btn-xs" %><br><br>
+    <% else %>
+      <%= link_to "Lock", toggle_lock_user_path(@user.id), method: :post, class: "btn btn-warning btn-xs" %><br><br>
+    <% end %>
+  <% end %>
+</h2>
 
 <p>Has made <%= pluralize(@user.ratings.count, 'rating') %> with a total average of <%= @user.average_rating %>.</p>
 
@@ -28,7 +36,7 @@
   <% end %>
 </ul>
 <% if @user == current_user %>
+<br>
   Account options:<br>
-  <%= link_to 'Edit account', edit_user_path(@user), class:'btn btn-default btn-xs' %><br>
-  <%= link_to 'Destroy account', @user, method: :delete, class:'btn btn-danger btn-xs', data: { confirm: 'You are about to destoy this account. Are you sure?' } %>
+  <%= edit_and_destroy_buttons(@user) %>
 <% end %>

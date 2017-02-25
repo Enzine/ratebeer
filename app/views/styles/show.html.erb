@@ -16,6 +16,6 @@
     <%= link_to beer.name, beer %> by brewery: <%= link_to beer.brewery.name, beer.brewery %><br>
   <% end %>
 <% end %>
-<br><br>
-<%= link_to 'Edit', edit_style_path(@style), class:'btn btn-default' %> |
-<%= link_to 'Back', styles_path, class:'btn btn-default' %>
+<br>
+
+<%= edit_and_destroy_buttons(@style) %>

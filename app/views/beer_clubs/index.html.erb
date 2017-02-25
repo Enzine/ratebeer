@@ -18,10 +18,7 @@
         <td><%= link_to beer_club.name, beer_club %></td>
         <td><%= beer_club.founded %></td>
         <td><%= beer_club.city %></td>
-        <% if current_user %>
-          <td><%= link_to 'Edit', edit_beer_club_path(beer_club), class:'btn btn-default btn-xs' %></td>
-          <td><%= link_to 'Destroy', beer_club, method: :delete, class:'btn btn-danger btn-xs', data: { confirm: 'Are you sure?' } %></td>
-        <% end %>
+        <td><%= edit_and_destroy_buttons(beer_club) %></td>
       </tr>
     <% end %>
   </tbody>

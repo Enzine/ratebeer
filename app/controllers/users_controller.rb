@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :toggle_lock]
+  before_action :ensure_that_admin, only: [:toggle_lock]
+  before_action :ensure_that_signed_in, except: [:index, :show]
 
   # GET /users
   # GET /users.json
@@ -19,6 +21,14 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
+  end
+
+  def toggle_lock
+    @user.update_attribute :blocked, (not @user.blocked)
+
+    new_status = @user.blocked? ? "locked" : "unlocked"
+
+    redirect_to @user, notice:"user #{new_status}"
   end
 
   # POST /users
@@ -70,5 +80,9 @@ class UsersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
      params.require(:user).permit(:username, :password, :password_confirmation)
+    end
+
+    def ensure_that_admin
+      redirect_to :back, notice:'you are not allowed to do that' unless current_user.admin
     end
 end
